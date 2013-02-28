@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://chyeh.github.com/sitemap.xml 
