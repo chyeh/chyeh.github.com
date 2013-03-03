@@ -4,7 +4,7 @@
   <title><![CDATA[chyeh's Octopress Blog]]></title>
   <link href="http://chyeh.github.com/atom.xml" rel="self"/>
   <link href="http://chyeh.github.com/"/>
-  <updated>2013-03-04T01:20:17+08:00</updated>
+  <updated>2013-03-04T01:24:00+08:00</updated>
   <id>http://chyeh.github.com/</id>
   <author>
     <name><![CDATA[chyeh]]></name>
@@ -165,7 +165,8 @@ $ bundle exec rake deploy
 
 <p>若確認無誤，只要打以下指令便能將網址push上git，更新你的網頁了！</p>
 
-<pre><code>$ git add .
+<pre><code>$ bundle exec rake generate
+$ git add .
 $ git push origin source
 $ bundle exec rake deploy
 </code></pre>
