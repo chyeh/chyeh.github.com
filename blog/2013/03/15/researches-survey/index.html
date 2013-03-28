@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>researches survey - chyeh's Octopress Blog</title>
+  <meta name="author" content="chyeh">
+
+  
+  <meta name="description" content="Projects 1. OpenFlow Wireless Abstract 把Open vSwitch取代手機上原本的Linux Bridge,並利用openflow controller作為controller plane去控制此vSwitch，讓手機能夠同時access多個wireless &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://chyeh.github.com/blog/2013/03/15/researches-survey/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="chyeh's Octopress Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">chyeh's Octopress Blog</a></h1>
+  
+    <h2>I'm new to it =P.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:chyeh.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Researches Survey</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-15T11:29:00+08:00" pubdate data-updated="true">Mar 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Projects</h2>
+
+<h3>1.  OpenFlow Wireless</h3>
+
+<h4>Abstract</h4>
+
+<p>把Open vSwitch取代手機上原本的Linux Bridge,並利用openflow controller作為controller plane去控制此vSwitch，讓手機能夠同時access多個wireless networks，這樣便能解決穿梭在不同AP涵蓋範圍的時候,網路會瞬斷的問題</p>
+
+<h4>Publications</h4>
+
+<ol>
+<li>OpenRoads-Empowering Research in Mobile Networks (2 pages)</li>
+<li>The Stanford OpenRoads Deployment (10 pages)</li>
+<li>Blueprint for Introducing Innovation into Wireless Mobile Networks(8 pages)</li>
+</ol>
+
+
+<h3>2.  Packet and Circuit Network Convergence (正在讀)</h3>
+
+<h4>Abstract</h4>
+
+<p>利用OpenFlow將packet switch 與 circuit switch結合起來</p>
+
+<h4>Publications</h4>
+
+<ol>
+<li>Unified Control Architecture for Packet and Circuit Network Convergence (278 pages)</li>
+<li>Rethinking IP Core Networks (12 pages)</li>
+<li>SDN Based Unified Control Architecture (2 pages)</li>
+<li>Why OpenFlow/SDN Can Succeed Where GMPLS Failed (3 pages)</li>
+<li>Application-Aware Aggregation and Traffic Engineering in a Converged Packet-Circuit Network (3 pages)</li>
+<li>Packet and Circuit Network Convergence with OpenFlow (3 pages)</li>
+<li>Experimental Demonstration of OpenFlow Control of Packet and Circuit Switches (3 pages)</li>
+<li>Unifying Packet and Circuit Switched Networks (6 pages)</li>
+</ol>
+
+
+<hr />
+
+<h2>Papers</h2>
+
+<h3>1.  Aster*x: Load-Balancing as a Network Primitive</h3>
+
+<h4>Abstract</h4>
+
+<p>以前的load balancing都要放一台device在網路的choke point那台switch上，固定在定點沒有彈性。要更有彈性的話就是在許多switch上都放load balancing device，不過成本很高。此研究利用openflow switch來做load-balancing來解決此問題。</p>
+
+<h3>2.  ElasticTree: Saving Energy in Data Center Networks (16 pages) (正在讀)</h3>
+
+<h4>Abstract</h4>
+
+<p>隨traffic demamd的大小，動態決定data center network topologies中links的多寡。可改善data center的能源消耗。</p>
+
+<hr />
+
+<h2>其他主題(還未研究)</h2>
+
+<ul>
+<li>Dynamic Flow Aggregation in an OpenFlow Network</li>
+<li>Open Pipes: Hardware System Design with OpenFlow</li>
+<li>Providing MPLS Services with OpenFlow</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">chyeh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-15T11:29:00+08:00" pubdate data-updated="true">Mar 15<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chyeh.github.com/blog/2013/03/15/researches-survey/" data-via="" data-counturl="http://chyeh.github.com/blog/2013/03/15/researches-survey/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/03/deploy-octopress-on-github-pages/" title="Previous Post: Deploy Octopress on Github Pages">&laquo; Deploy Octopress on Github Pages</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/03/28/raduis-portallan-ren-bao/" title="Next Post: Raduis Portal懶人包">Raduis Portal懶人包 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/28/raduis-portallan-ren-bao/">Raduis Portal懶人包</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/15/researches-survey/">researches survey</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/03/deploy-octopress-on-github-pages/">Deploy Octopress on Github Pages</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - chyeh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

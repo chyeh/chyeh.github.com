@@ -4,7 +4,7 @@
   <title><![CDATA[chyeh's Octopress Blog]]></title>
   <link href="http://chyeh.github.com/atom.xml" rel="self"/>
   <link href="http://chyeh.github.com/"/>
-  <updated>2013-03-04T01:24:00+08:00</updated>
+  <updated>2013-03-28T15:48:24+08:00</updated>
   <id>http://chyeh.github.com/</id>
   <author>
     <name><![CDATA[chyeh]]></name>
@@ -12,6 +12,195 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Raduis Portal懶人包]]></title>
+    <link href="http://chyeh.github.com/blog/2013/03/28/raduis-portallan-ren-bao/"/>
+    <updated>2013-03-28T15:45:00+08:00</updated>
+    <id>http://chyeh.github.com/blog/2013/03/28/raduis-portallan-ren-bao</id>
+    <content type="html"><![CDATA[<h3>1.建立專案</h3>
+
+<p>輸入以下指令：</p>
+
+<pre><code>$ rails new rails3-bootstrap-devise-cancan -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb -T
+</code></pre>
+
+<p>此指令將會建立一個<a href="https://github.com/RailsApps/rails3-bootstrap-devise-cancan">rails3-bootstrap-devise-cancan</a>專案。輸入指令之後，terminal會出現以下幾個問題：</p>
+
+<pre><code>question  Install an example application?
+      1)  I want to build my own application
+      2)  membership/subscription/saas
+      3)  rails-prelaunch-signup
+      4)  rails3-bootstrap-devise-cancan
+      5)  rails3-devise-rspec-cucumber
+      6)  rails3-mongoid-devise
+      7)  rails3-mongoid-omniauth
+      8)  rails3-subdomains
+railsapps  Enter your selection: 4
+//略...
+question  Web server for development?
+      1)  WEBrick (default)
+      2)  Thin
+      3)  Unicorn
+      4)  Puma
+   setup  Enter your selection: 1
+//略...
+question  Web server for production?
+      1)  Same as development
+      2)  Thin
+      3)  Unicorn
+      4)  Puma
+   setup  Enter your selection: 2
+//略...
+question  Template engine?
+      1)  ERB
+      2)  Haml
+      3)  Slim (experimental)
+   setup  Enter your selection: 1
+</code></pre>
+
+<p>其中，在選擇production server的時候選thin，正式上線才不會出現一堆debug用的log。之後還有一些問題要回答，如下：</p>
+
+<pre><code>extras  Set a robots.txt file to ban spiders? (y/n) y
+//略...
+extras  Create a GitHub repository? (y/n) n
+//略...
+extras  Use or create a project-specific rvm gemset and .rvmrc? (y/n) y
+//略...
+extras  Add 'therubyracer' JavaScript runtime (for Linux users without node.js)? (y/n) y
+</code></pre>
+
+<p>關於<strong>robots.txt</strong>，git頁面的說明如下：</p>
+
+<blockquote><p>Set a robots.txt file to ban spiders if you want to keep your new site out of Google search results.</p></blockquote>
+
+<p>接著打入以下指令之後，瀏覽<a href="http://localhost:3000/">http://localhost:3000/</a>應該就會有東西了：</p>
+
+<pre><code>$ cd rails3-bootstrap-devise-cancan
+$ bundle install
+$ rails s
+</code></pre>
+
+<h3>2.將devise-radius-authenticatable加入專案</h3>
+
+<p>編輯<code>Gemfile</code>，在最後一行加上：</p>
+
+<pre><code>gem "devise-radius-authenticatable"
+</code></pre>
+
+<p>之後打入指令：</p>
+
+<pre><code>$ bundle install
+$ generate devise:install
+</code></pre>
+
+<p>會出現以下訊息，請選Y：</p>
+
+<pre><code>    conflict  config/initializers/devise.rb
+Overwrite /home/chyehlt/ror/test/rails3-bootstrap-devise-cancan/config/initializers/devise.rb? (enter "h" for help) [Ynaqdh] Y
+</code></pre>
+
+<p>編輯<code>app/models/user.rb</code>，並在原本的<strong>:database_authenticatable</strong>前面加上<strong>:radius_authenticatable</strong>。接著，打入以下指令：</p>
+
+<pre><code>$ rails generate devise_radius_authenticatable:install &lt;IP&gt; &lt;SECRET&gt; [options]
+</code></pre>
+
+<p>接下來請參考了git頁面說明文件，編輯<code>config/initializers/devise.rb</code>。請在<strong>warden</strong>的部份加入幾行code，如下：</p>
+
+<pre><code>config.warden do |warden_config|
+  warden_config.default_strategies(:database_authenticatable,
+                                   :radius_authenticatable,
+                                   {:scope =&gt; :admin})
+end
+</code></pre>
+
+<p>其中，database的method寫在前面，所以server會先檢查資料庫，有的話就算認證成功。如果資料庫這關沒過，就再問radius。至於 <strong>:scope => :admin</strong> 其實我不太知道這行是幹嘛的。接著，將此行：</p>
+
+<pre><code>config.radius_uid_field = :uid
+</code></pre>
+
+<p>改為</p>
+
+<pre><code>config.radius_uid_field = :email
+</code></pre>
+
+<p>最後，若要測試請打以下指令，應該就算完成了吧！</p>
+
+<pre><code>$ rails s
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[researches survey]]></title>
+    <link href="http://chyeh.github.com/blog/2013/03/15/researches-survey/"/>
+    <updated>2013-03-15T11:29:00+08:00</updated>
+    <id>http://chyeh.github.com/blog/2013/03/15/researches-survey</id>
+    <content type="html"><![CDATA[<h2>Projects</h2>
+
+<h3>1.  OpenFlow Wireless</h3>
+
+<h4>Abstract</h4>
+
+<p>把Open vSwitch取代手機上原本的Linux Bridge,並利用openflow controller作為controller plane去控制此vSwitch，讓手機能夠同時access多個wireless networks，這樣便能解決穿梭在不同AP涵蓋範圍的時候,網路會瞬斷的問題</p>
+
+<h4>Publications</h4>
+
+<ol>
+<li>OpenRoads-Empowering Research in Mobile Networks (2 pages)</li>
+<li>The Stanford OpenRoads Deployment (10 pages)</li>
+<li>Blueprint for Introducing Innovation into Wireless Mobile Networks(8 pages)</li>
+</ol>
+
+
+<h3>2.  Packet and Circuit Network Convergence (正在讀)</h3>
+
+<h4>Abstract</h4>
+
+<p>利用OpenFlow將packet switch 與 circuit switch結合起來</p>
+
+<h4>Publications</h4>
+
+<ol>
+<li>Unified Control Architecture for Packet and Circuit Network Convergence (278 pages)</li>
+<li>Rethinking IP Core Networks (12 pages)</li>
+<li>SDN Based Unified Control Architecture (2 pages)</li>
+<li>Why OpenFlow/SDN Can Succeed Where GMPLS Failed (3 pages)</li>
+<li>Application-Aware Aggregation and Traffic Engineering in a Converged Packet-Circuit Network (3 pages)</li>
+<li>Packet and Circuit Network Convergence with OpenFlow (3 pages)</li>
+<li>Experimental Demonstration of OpenFlow Control of Packet and Circuit Switches (3 pages)</li>
+<li>Unifying Packet and Circuit Switched Networks (6 pages)</li>
+</ol>
+
+
+<hr />
+
+<h2>Papers</h2>
+
+<h3>1.  Aster*x: Load-Balancing as a Network Primitive</h3>
+
+<h4>Abstract</h4>
+
+<p>以前的load balancing都要放一台device在網路的choke point那台switch上，固定在定點沒有彈性。要更有彈性的話就是在許多switch上都放load balancing device，不過成本很高。此研究利用openflow switch來做load-balancing來解決此問題。</p>
+
+<h3>2.  ElasticTree: Saving Energy in Data Center Networks (16 pages) (正在讀)</h3>
+
+<h4>Abstract</h4>
+
+<p>隨traffic demamd的大小，動態決定data center network topologies中links的多寡。可改善data center的能源消耗。</p>
+
+<hr />
+
+<h2>其他主題(還未研究)</h2>
+
+<ul>
+<li>Dynamic Flow Aggregation in an OpenFlow Network</li>
+<li>Open Pipes: Hardware System Design with OpenFlow</li>
+<li>Providing MPLS Services with OpenFlow</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Deploy Octopress on Github Pages]]></title>

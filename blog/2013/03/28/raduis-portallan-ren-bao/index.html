@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Raduis Portal懶人包 - chyeh's Octopress Blog</title>
+  <meta name="author" content="chyeh">
+
+  
+  <meta name="description" content="1.建立專案 輸入以下指令： $ rails new rails3-bootstrap-devise-cancan -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb -T 此指令將會建立一個rails3- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://chyeh.github.com/blog/2013/03/28/raduis-portallan-ren-bao/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="chyeh's Octopress Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">chyeh's Octopress Blog</a></h1>
+  
+    <h2>I'm new to it =P.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:chyeh.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Raduis Portal懶人包</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-28T15:45:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3>1.建立專案</h3>
+
+<p>輸入以下指令：</p>
+
+<pre><code>$ rails new rails3-bootstrap-devise-cancan -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb -T
+</code></pre>
+
+<p>此指令將會建立一個<a href="https://github.com/RailsApps/rails3-bootstrap-devise-cancan">rails3-bootstrap-devise-cancan</a>專案。輸入指令之後，terminal會出現以下幾個問題：</p>
+
+<pre><code>question  Install an example application?
+      1)  I want to build my own application
+      2)  membership/subscription/saas
+      3)  rails-prelaunch-signup
+      4)  rails3-bootstrap-devise-cancan
+      5)  rails3-devise-rspec-cucumber
+      6)  rails3-mongoid-devise
+      7)  rails3-mongoid-omniauth
+      8)  rails3-subdomains
+railsapps  Enter your selection: 4
+//略...
+question  Web server for development?
+      1)  WEBrick (default)
+      2)  Thin
+      3)  Unicorn
+      4)  Puma
+   setup  Enter your selection: 1
+//略...
+question  Web server for production?
+      1)  Same as development
+      2)  Thin
+      3)  Unicorn
+      4)  Puma
+   setup  Enter your selection: 2
+//略...
+question  Template engine?
+      1)  ERB
+      2)  Haml
+      3)  Slim (experimental)
+   setup  Enter your selection: 1
+</code></pre>
+
+<p>其中，在選擇production server的時候選thin，正式上線才不會出現一堆debug用的log。之後還有一些問題要回答，如下：</p>
+
+<pre><code>extras  Set a robots.txt file to ban spiders? (y/n) y
+//略...
+extras  Create a GitHub repository? (y/n) n
+//略...
+extras  Use or create a project-specific rvm gemset and .rvmrc? (y/n) y
+//略...
+extras  Add 'therubyracer' JavaScript runtime (for Linux users without node.js)? (y/n) y
+</code></pre>
+
+<p>關於<strong>robots.txt</strong>，git頁面的說明如下：</p>
+
+<blockquote><p>Set a robots.txt file to ban spiders if you want to keep your new site out of Google search results.</p></blockquote>
+
+<p>接著打入以下指令之後，瀏覽<a href="http://localhost:3000/">http://localhost:3000/</a>應該就會有東西了：</p>
+
+<pre><code>$ cd rails3-bootstrap-devise-cancan
+$ bundle install
+$ rails s
+</code></pre>
+
+<h3>2.將devise-radius-authenticatable加入專案</h3>
+
+<p>編輯<code>Gemfile</code>，在最後一行加上：</p>
+
+<pre><code>gem "devise-radius-authenticatable"
+</code></pre>
+
+<p>之後打入指令：</p>
+
+<pre><code>$ bundle install
+$ generate devise:install
+</code></pre>
+
+<p>會出現以下訊息，請選Y：</p>
+
+<pre><code>    conflict  config/initializers/devise.rb
+Overwrite /home/chyehlt/ror/test/rails3-bootstrap-devise-cancan/config/initializers/devise.rb? (enter "h" for help) [Ynaqdh] Y
+</code></pre>
+
+<p>編輯<code>app/models/user.rb</code>，並在原本的<strong>:database_authenticatable</strong>前面加上<strong>:radius_authenticatable</strong>。接著，打入以下指令：</p>
+
+<pre><code>$ rails generate devise_radius_authenticatable:install &lt;IP&gt; &lt;SECRET&gt; [options]
+</code></pre>
+
+<p>接下來請參考了git頁面說明文件，編輯<code>config/initializers/devise.rb</code>。請在<strong>warden</strong>的部份加入幾行code，如下：</p>
+
+<pre><code>config.warden do |warden_config|
+  warden_config.default_strategies(:database_authenticatable,
+                                   :radius_authenticatable,
+                                   {:scope =&gt; :admin})
+end
+</code></pre>
+
+<p>其中，database的method寫在前面，所以server會先檢查資料庫，有的話就算認證成功。如果資料庫這關沒過，就再問radius。至於 <strong>:scope => :admin</strong> 其實我不太知道這行是幹嘛的。接著，將此行：</p>
+
+<pre><code>config.radius_uid_field = :uid
+</code></pre>
+
+<p>改為</p>
+
+<pre><code>config.radius_uid_field = :email
+</code></pre>
+
+<p>最後，若要測試請打以下指令，應該就算完成了吧！</p>
+
+<pre><code>$ rails s
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">chyeh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-28T15:45:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chyeh.github.com/blog/2013/03/28/raduis-portallan-ren-bao/" data-via="" data-counturl="http://chyeh.github.com/blog/2013/03/28/raduis-portallan-ren-bao/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/15/researches-survey/" title="Previous Post: researches survey">&laquo; researches survey</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/28/raduis-portallan-ren-bao/">Raduis Portal懶人包</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/15/researches-survey/">researches survey</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/03/deploy-octopress-on-github-pages/">Deploy Octopress on Github Pages</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - chyeh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
