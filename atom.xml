@@ -4,7 +4,7 @@
   <title><![CDATA[chyeh's Octopress Blog]]></title>
   <link href="http://chyeh.github.com/atom.xml" rel="self"/>
   <link href="http://chyeh.github.com/"/>
-  <updated>2013-03-28T15:48:24+08:00</updated>
+  <updated>2013-03-28T16:10:51+08:00</updated>
   <id>http://chyeh.github.com/</id>
   <author>
     <name><![CDATA[chyeh]]></name>
@@ -18,7 +18,7 @@
     <link href="http://chyeh.github.com/blog/2013/03/28/raduis-portallan-ren-bao/"/>
     <updated>2013-03-28T15:45:00+08:00</updated>
     <id>http://chyeh.github.com/blog/2013/03/28/raduis-portallan-ren-bao</id>
-    <content type="html"><![CDATA[<h3>1.建立專案</h3>
+    <content type="html"><![CDATA[<h2>1.建立專案</h2>
 
 <p>輸入以下指令：</p>
 
@@ -81,7 +81,9 @@ $ bundle install
 $ rails s
 </code></pre>
 
-<h3>2.將devise-radius-authenticatable加入專案</h3>
+<hr />
+
+<h2>2.將devise-radius-authenticatable加入專案</h2>
 
 <p>編輯<code>Gemfile</code>，在最後一行加上：</p>
 
