@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>researches survey - chyeh's Octopress Blog</title>
+  <title>Multimedia Communications Homework #2 - chyeh's Octopress Blog</title>
   <meta name="author" content="chyeh">
 
   
-  <meta name="description" content="Projects 1. OpenFlow Wireless Abstract 把Open vSwitch取代手機上原本的Linux Bridge,並利用openflow controller作為controller plane去控制此vSwitch，讓手機能夠同時access多個wireless &hellip;">
+  <meta name="description" content="Algorithm 本次作業的演算法參考課程講義chap-05之中第10到18頁，Case Study: Block-based approach的部分。然而講義當中計算SASD的算法並沒有說明邊界blocks的情況。因此我的SASD值沒有計算那些邊界的blocks。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://chyeh.github.com/blog/2013/03/15/researches-survey/">
+  <link rel="canonical" href="http://chyeh.github.com/blog/2013/04/07/multimedia-communications-homework-number-2/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,7 +67,7 @@
   
   <header>
     
-      <h1 class="entry-title">Researches Survey</h1>
+      <h1 class="entry-title">Multimedia Communications Homework #2</h1>
     
     
       <p class="meta">
@@ -83,76 +83,82 @@
   
 
 
-<time datetime="2013-03-15T11:29:00+08:00" pubdate data-updated="true">Mar 15<span>th</span>, 2013</time>
+<time datetime="2013-04-07T15:53:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>Projects</h2>
+<div class="entry-content"><h2>Algorithm</h2>
 
-<h3>1.  OpenFlow Wireless</h3>
-
-<h4>Abstract</h4>
-
-<p>把Open vSwitch取代手機上原本的Linux Bridge,並利用openflow controller作為controller plane去控制此vSwitch，讓手機能夠同時access多個wireless networks，這樣便能解決穿梭在不同AP涵蓋範圍的時候,網路會瞬斷的問題</p>
-
-<h4>Publications</h4>
-
-<ol>
-<li>OpenRoads-Empowering Research in Mobile Networks (2 pages)</li>
-<li>The Stanford OpenRoads Deployment (10 pages)</li>
-<li>Blueprint for Introducing Innovation into Wireless Mobile Networks(8 pages)</li>
-</ol>
-
-
-<h3>2.  Packet and Circuit Network Convergence (正在讀)</h3>
-
-<h4>Abstract</h4>
-
-<p>利用OpenFlow將packet switch 與 circuit switch結合起來</p>
-
-<h4>Publications</h4>
-
-<ol>
-<li>Unified Control Architecture for Packet and Circuit Network Convergence (278 pages)</li>
-<li>Rethinking IP Core Networks (12 pages)</li>
-<li>SDN Based Unified Control Architecture (2 pages)</li>
-<li>Why OpenFlow/SDN Can Succeed Where GMPLS Failed (3 pages)</li>
-<li>Application-Aware Aggregation and Traffic Engineering in a Converged Packet-Circuit Network (3 pages)</li>
-<li>Packet and Circuit Network Convergence with OpenFlow (3 pages)</li>
-<li>Experimental Demonstration of OpenFlow Control of Packet and Circuit Switches (3 pages)</li>
-<li>Unifying Packet and Circuit Switched Networks (6 pages)</li>
-</ol>
-
+<p>本次作業的演算法參考課程講義<strong>chap-05</strong>之中<strong>第10到18頁</strong>，<strong>Case Study: Block-based approach</strong>的部分。然而講義當中計算<strong>SASD</strong>的算法並沒有說明邊界blocks的情況。因此我的<strong>SASD值沒有計算那些邊界的blocks</strong>。其中<strong>threshhold</strong>的判定方式，我由觀察測資算出之結果後才加已決定算法。由於有<strong>三個不同的矩陣Y, U, V</strong>，因此照此演算法會算出<strong>三個矩陣的ratio</strong>。如果要檢查是否為<strong>Abrupt Scene Change</strong>，則此三個ratio只要有兩個<strong>大於1.5</strong>，即判定為超過threshhold。若是要檢查是否為<strong>Gradual Scene Change</strong>，則只要有一個<strong>ratio大於2.1</strong>，即判定為超過threshhold。如果<strong>已經判定為Abrupt Scene Change，將不繼續檢查是否為Gradual Scene Change</strong>。</p>
 
 <hr />
 
-<h2>Papers</h2>
+<h2>解壓縮</h2>
 
-<h3>1.  Aster*x: Load-Balancing as a Network Primitive</h3>
+<p>請下指令：</p>
 
-<h4>Abstract</h4>
-
-<p>以前的load balancing都要放一台device在網路的choke point那台switch上，固定在定點沒有彈性。要更有彈性的話就是在許多switch上都放load balancing device，不過成本很高。此研究利用openflow switch來做load-balancing來解決此問題。</p>
-
-<h3>2.  ElasticTree: Saving Energy in Data Center Networks (16 pages) (正在讀)</h3>
-
-<h4>Abstract</h4>
-
-<p>隨traffic demamd的大小，動態決定data center network topologies中links的多寡。可改善data center的能源消耗。</p>
+<pre><code>$ tar -zxvf 0156545-葉治宏-mc102-hw2.tar.gz
+</code></pre>
 
 <hr />
 
-<h2>其他主題(還未研究)</h2>
+<h2>How to Compile</h2>
 
-<ul>
-<li>Dynamic Flow Aggregation in an OpenFlow Network</li>
-<li>Open Pipes: Hardware System Design with OpenFlow</li>
-<li>Providing MPLS Services with OpenFlow</li>
-</ul>
+<p>請移到解壓縮後的目錄底下，直接下make指令:</p>
 
+<pre><code>$ cd 0156545-葉治宏-mc102-hw2/
+$ make
+</code></pre>
+
+<hr />
+
+<h2>Usage</h2>
+
+<h3>使用方法如下：</h3>
+
+<pre><code>$ scp
+Usage: yay [-s &lt;widht&gt;x&lt;heigh&gt;] [-f format] [-p] filename.yuv  
+    format can be: 0-Y only, 1-YUV420, 2-YUV422, 3-YUV444
+    specify '-p' to enable semi-planar mode
+</code></pre>
+
+<h3>舉例來說：</h3>
+
+<p>若要測試測資<strong>test1.yuv</strong>:</p>
+
+<pre><code>$ scd -s 176x144 -f 1 test1.yuv
+</code></pre>
+
+<p>若要測試測資<strong>test2.yuv</strong>:</p>
+
+<pre><code>$ scd -s 352x288 -f 1 test2.yuv
+</code></pre>
+
+<hr />
+
+<h2>Result</h2>
+
+<h3>第一筆測資<code>test1.yuv</code></h3>
+
+<pre><code>$ scd -s 176x144 -f 1 test1.yuv
+...(省略，那些是我自己寫的debug訊息)
+$ cat output.txt
+31 Abrupt
+65 Gradual
+</code></pre>
+
+<h3>第二筆測資<code>test2.yuv</code></h3>
+
+<pre><code>$ rm output.txt                     #把test1.yuv的結果先刪除
+$ scd -s 352x288 -f 1 test2.yuv
+...(省略，同上)
+$ cat output.txt
+31 Abrupt
+63 Gradual
+</code></pre>
 </div>
 
 
@@ -175,7 +181,7 @@
   
 
 
-<time datetime="2013-03-15T11:29:00+08:00" pubdate data-updated="true">Mar 15<span>th</span>, 2013</time>
+<time datetime="2013-04-07T15:53:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
       
 
 
@@ -183,7 +189,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chyeh.github.com/blog/2013/03/15/researches-survey/" data-via="" data-counturl="http://chyeh.github.com/blog/2013/03/15/researches-survey/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chyeh.github.com/blog/2013/04/07/multimedia-communications-homework-number-2/" data-via="" data-counturl="http://chyeh.github.com/blog/2013/04/07/multimedia-communications-homework-number-2/" >Tweet</a>
   
   
   
@@ -192,10 +198,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/03/03/deploy-octopress-on-github-pages/" title="Previous Post: Deploy Octopress on Github Pages">&laquo; Deploy Octopress on Github Pages</a>
+        <a class="basic-alignment left" href="/blog/2013/03/28/raduis-portallan-ren-bao/" title="Previous Post: Raduis Portal懶人包">&laquo; Raduis Portal懶人包</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/03/28/raduis-portallan-ren-bao/" title="Next Post: Raduis Portal懶人包">Raduis Portal懶人包 &raquo;</a>
       
     </p>
   </footer>

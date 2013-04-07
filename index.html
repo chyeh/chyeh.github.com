@@ -9,7 +9,7 @@
   <meta name="author" content="chyeh">
 
   
-  <meta name="description" content="1.建立專案 輸入以下指令： $ rails new rails3-bootstrap-devise-cancan -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb -T 此指令將會建立一個rails3- &hellip;">
+  <meta name="description" content="Algorithm 本次作業的演算法參考課程講義chap-05之中第10到18頁，Case Study: Block-based approach的部分。然而講義當中計算SASD的算法並沒有說明邊界blocks的情況。因此我的SASD值沒有計算那些邊界的blocks。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +64,110 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/07/multimedia-communications-homework-number-2/">Multimedia Communications Homework #2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T15:53:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Algorithm</h2>
+
+<p>本次作業的演算法參考課程講義<strong>chap-05</strong>之中<strong>第10到18頁</strong>，<strong>Case Study: Block-based approach</strong>的部分。然而講義當中計算<strong>SASD</strong>的算法並沒有說明邊界blocks的情況。因此我的<strong>SASD值沒有計算那些邊界的blocks</strong>。其中<strong>threshhold</strong>的判定方式，我由觀察測資算出之結果後才加已決定算法。由於有<strong>三個不同的矩陣Y, U, V</strong>，因此照此演算法會算出<strong>三個矩陣的ratio</strong>。如果要檢查是否為<strong>Abrupt Scene Change</strong>，則此三個ratio只要有兩個<strong>大於1.5</strong>，即判定為超過threshhold。若是要檢查是否為<strong>Gradual Scene Change</strong>，則只要有一個<strong>ratio大於2.1</strong>，即判定為超過threshhold。如果<strong>已經判定為Abrupt Scene Change，將不繼續檢查是否為Gradual Scene Change</strong>。</p>
+
+<hr />
+
+<h2>解壓縮</h2>
+
+<p>請下指令：</p>
+
+<pre><code>$ tar -zxvf 0156545-葉治宏-mc102-hw2.tar.gz
+</code></pre>
+
+<hr />
+
+<h2>How to Compile</h2>
+
+<p>請移到解壓縮後的目錄底下，直接下make指令:</p>
+
+<pre><code>$ cd 0156545-葉治宏-mc102-hw2/
+$ make
+</code></pre>
+
+<hr />
+
+<h2>Usage</h2>
+
+<h3>使用方法如下：</h3>
+
+<pre><code>$ scp
+Usage: yay [-s &lt;widht&gt;x&lt;heigh&gt;] [-f format] [-p] filename.yuv  
+    format can be: 0-Y only, 1-YUV420, 2-YUV422, 3-YUV444
+    specify '-p' to enable semi-planar mode
+</code></pre>
+
+<h3>舉例來說：</h3>
+
+<p>若要測試測資<strong>test1.yuv</strong>:</p>
+
+<pre><code>$ scd -s 176x144 -f 1 test1.yuv
+</code></pre>
+
+<p>若要測試測資<strong>test2.yuv</strong>:</p>
+
+<pre><code>$ scd -s 352x288 -f 1 test2.yuv
+</code></pre>
+
+<hr />
+
+<h2>Result</h2>
+
+<h3>第一筆測資<code>test1.yuv</code></h3>
+
+<pre><code>$ scd -s 176x144 -f 1 test1.yuv
+...(省略，那些是我自己寫的debug訊息)
+$ cat output.txt
+31 Abrupt
+65 Gradual
+</code></pre>
+
+<h3>第二筆測資<code>test2.yuv</code></h3>
+
+<pre><code>$ rm output.txt                     #把test1.yuv的結果先刪除
+$ scd -s 352x288 -f 1 test2.yuv
+...(省略，同上)
+$ cat output.txt
+31 Abrupt
+63 Gradual
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -520,6 +624,10 @@ $ bundle exec rake deploy
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/07/multimedia-communications-homework-number-2/">Multimedia Communications Homework #2</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/03/28/raduis-portallan-ren-bao/">Raduis Portal懶人包</a>
