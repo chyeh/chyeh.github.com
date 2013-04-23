@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>researches survey - chyeh's Octopress Blog</title>
+  <title>libnefilter_queue起步走 - chyeh's Octopress Blog</title>
   <meta name="author" content="chyeh">
 
   
-  <meta name="description" content="Projects 1. OpenFlow Wireless Abstract 把Open vSwitch取代手機上原本的Linux Bridge,並利用openflow controller作為controller plane去控制此vSwitch，讓手機能夠同時access多個wireless &hellip;">
+  <meta name="description" content="前言 根據[netfilter的官方網站(http://netfilter.org/)，libnetfilter_queue這個套件需要跑在linux kernel 2.6.14之後的版本，且需要libnfnetlink此套件。 套件版本 2009-Jun-22: libnfnetlink-1.0 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://chyeh.github.com/blog/2013/03/15/researches-survey/">
+  <link rel="canonical" href="http://chyeh.github.com/blog/2013/04/23/libnefilter-queueqi-bu-zou/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,7 +67,7 @@
   
   <header>
     
-      <h1 class="entry-title">Researches Survey</h1>
+      <h1 class="entry-title">Libnefilter_queue起步走</h1>
     
     
       <p class="meta">
@@ -83,75 +83,72 @@
   
 
 
-<time datetime="2013-03-15T11:29:00+08:00" pubdate data-updated="true">Mar 15<span>th</span>, 2013</time>
+<time datetime="2013-04-23T16:46:00+08:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>Projects</h2>
+<div class="entry-content"><h2>前言</h2>
 
-<h3>1.  OpenFlow Wireless</h3>
+<p>根據[netfilter的官方網站(http://netfilter.org/)，libnetfilter_queue這個套件需要跑在linux kernel 2.6.14之後的版本，且需要libnfnetlink此套件。</p>
 
-<h4>Abstract</h4>
-
-<p>把Open vSwitch取代手機上原本的Linux Bridge,並利用openflow controller作為controller plane去控制此vSwitch，讓手機能夠同時access多個wireless networks，這樣便能解決穿梭在不同AP涵蓋範圍的時候,網路會瞬斷的問題</p>
-
-<h4>Publications</h4>
-
-<ol>
-<li>OpenRoads-Empowering Research in Mobile Networks (2 pages)</li>
-<li>The Stanford OpenRoads Deployment (10 pages)</li>
-<li>Blueprint for Introducing Innovation into Wireless Mobile Networks(8 pages)</li>
-</ol>
-
-
-<h3>2.  Packet and Circuit Network Convergence (正在讀)</h3>
-
-<h4>Abstract</h4>
-
-<p>利用OpenFlow將packet switch 與 circuit switch結合起來</p>
-
-<h4>Publications</h4>
-
-<ol>
-<li>Unified Control Architecture for Packet and Circuit Network Convergence (278 pages)</li>
-<li>Rethinking IP Core Networks (12 pages)</li>
-<li>SDN Based Unified Control Architecture (2 pages)</li>
-<li>Why OpenFlow/SDN Can Succeed Where GMPLS Failed (3 pages)</li>
-<li>Application-Aware Aggregation and Traffic Engineering in a Converged Packet-Circuit Network (3 pages)</li>
-<li>Packet and Circuit Network Convergence with OpenFlow (3 pages)</li>
-<li>Experimental Demonstration of OpenFlow Control of Packet and Circuit Switches (3 pages)</li>
-<li>Unifying Packet and Circuit Switched Networks (6 pages)</li>
-</ol>
-
-
-<hr />
-
-<h2>Papers</h2>
-
-<h3>1.  Aster*x: Load-Balancing as a Network Primitive</h3>
-
-<h4>Abstract</h4>
-
-<p>以前的load balancing都要放一台device在網路的choke point那台switch上，固定在定點沒有彈性。要更有彈性的話就是在許多switch上都放load balancing device，不過成本很高。此研究利用openflow switch來做load-balancing來解決此問題。</p>
-
-<h3>2.  ElasticTree: Saving Energy in Data Center Networks (16 pages) (正在讀)</h3>
-
-<h4>Abstract</h4>
-
-<p>隨traffic demamd的大小，動態決定data center network topologies中links的多寡。可改善data center的能源消耗。</p>
-
-<hr />
-
-<h2>其他主題(還未研究)</h2>
+<h2>套件版本</h2>
 
 <ul>
-<li>Dynamic Flow Aggregation in an OpenFlow Network</li>
-<li>Open Pipes: Hardware System Design with OpenFlow</li>
-<li>Providing MPLS Services with OpenFlow</li>
+<li>2009-Jun-22: libnfnetlink-1.0.0</li>
+<li>2010-Jul-11: libnetfilter_queue-1.0.0</li>
 </ul>
+
+
+<h2>安裝</h2>
+
+<h3>先安裝dependency: libnfnetlink</h3>
+
+<p>到<a href="http://netfilter.org/projects/libnfnetlink/downloads.html">官方網站下載頁面</a>下載libnfnetlink-1.0.0.tar.bz2，並打入已下指令</p>
+
+<pre><code>$ tar -jxvf libnfnetlink-1.0.0.tar.bz2 
+$ cd libnfnetlink-1.0.0/
+$ ./configure
+$ make
+$ sudo make install
+</code></pre>
+
+<h3>再安裝libnetfilter_queue</h3>
+
+<p>到<a href="http://netfilter.org/projects/libnetfilter_queue/downloads.html">官方網站下載頁面</a>下載libnetfilter_queue-1.0.0.tar.bz2，並打入已下指令</p>
+
+<pre><code>$ tar -jxvf libnetfilter_queue-1.0.0.tar.bz2
+$ cd libnetfilter_queue-1.0.0
+$ ./configure
+$ make
+$ sudo make install
+</code></pre>
+
+<h2>編譯範例程式: nfqnl_test.c</h2>
+
+<pre><code>$ cd utils
+$ gcc -Wall -o test nfqnl_test.c -lnfnetlink -lnetfilter_queue
+</code></pre>
+
+<h2>測試</h2>
+
+<p>值得注意的是，測試程式需要有root權限，且必須先設定環境變數，因此使用su。另外，若是使用ssh的話，若先下達iptables的指令會造成ssh被擋掉。需要執行test程式之後才會恢復連線。</p>
+
+<pre><code>$ su
+$ LD_LIBRARY_PATH=/usr/local/lib/
+$ export LD_LIBRARY_PATH
+$ iptables -A OUTPUT -p tcp -j NFQUEUE --queue-num 0
+$ ./test
+</code></pre>
+
+<h2>References</h2>
+
+<ol>
+<li><a href="http://netfilter.org/">http://netfilter.org/</a></li>
+<li><a href="http://www.roman10.net/how-to-configure-install-and-use-libnefilter_queue-on-linux/">http://www.roman10.net/how-to-configure-install-and-use-libnefilter_queue-on-linux/</a></li>
+</ol>
 
 </div>
 
@@ -175,7 +172,7 @@
   
 
 
-<time datetime="2013-03-15T11:29:00+08:00" pubdate data-updated="true">Mar 15<span>th</span>, 2013</time>
+<time datetime="2013-04-23T16:46:00+08:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2013</time>
       
 
 
@@ -183,7 +180,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chyeh.github.com/blog/2013/03/15/researches-survey/" data-via="" data-counturl="http://chyeh.github.com/blog/2013/03/15/researches-survey/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chyeh.github.com/blog/2013/04/23/libnefilter-queueqi-bu-zou/" data-via="" data-counturl="http://chyeh.github.com/blog/2013/04/23/libnefilter-queueqi-bu-zou/" >Tweet</a>
   
   
   
@@ -192,10 +189,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/03/03/deploy-octopress-on-github-pages/" title="Previous Post: Deploy Octopress on Github Pages">&laquo; Deploy Octopress on Github Pages</a>
+        <a class="basic-alignment left" href="/blog/2013/04/12/tracing-openflow-source-code/" title="Previous Post: Tracing OpenFlow Source Code">&laquo; Tracing OpenFlow Source Code</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/03/28/raduis-portallan-ren-bao/" title="Next Post: Raduis Portal懶人包">Raduis Portal懶人包 &raquo;</a>
       
     </p>
   </footer>

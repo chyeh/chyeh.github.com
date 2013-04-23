@@ -4,7 +4,7 @@
   <title><![CDATA[chyeh's Octopress Blog]]></title>
   <link href="http://chyeh.github.com/atom.xml" rel="self"/>
   <link href="http://chyeh.github.com/"/>
-  <updated>2013-04-07T16:42:45+08:00</updated>
+  <updated>2013-04-23T17:21:41+08:00</updated>
   <id>http://chyeh.github.com/</id>
   <author>
     <name><![CDATA[chyeh]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[libnefilter_queue起步走]]></title>
+    <link href="http://chyeh.github.com/blog/2013/04/23/libnefilter-queueqi-bu-zou/"/>
+    <updated>2013-04-23T16:46:00+08:00</updated>
+    <id>http://chyeh.github.com/blog/2013/04/23/libnefilter-queueqi-bu-zou</id>
+    <content type="html"><![CDATA[<h2>前言</h2>
+
+<p>根據[netfilter的官方網站(http://netfilter.org/)，libnetfilter_queue這個套件需要跑在linux kernel 2.6.14之後的版本，且需要libnfnetlink此套件。</p>
+
+<h2>套件版本</h2>
+
+<ul>
+<li>2009-Jun-22: libnfnetlink-1.0.0</li>
+<li>2010-Jul-11: libnetfilter_queue-1.0.0</li>
+</ul>
+
+
+<h2>安裝</h2>
+
+<h3>先安裝dependency: libnfnetlink</h3>
+
+<p>到<a href="http://netfilter.org/projects/libnfnetlink/downloads.html">官方網站下載頁面</a>下載libnfnetlink-1.0.0.tar.bz2，並打入已下指令</p>
+
+<pre><code>$ tar -jxvf libnfnetlink-1.0.0.tar.bz2 
+$ cd libnfnetlink-1.0.0/
+$ ./configure
+$ make
+$ sudo make install
+</code></pre>
+
+<h3>再安裝libnetfilter_queue</h3>
+
+<p>到<a href="http://netfilter.org/projects/libnetfilter_queue/downloads.html">官方網站下載頁面</a>下載libnetfilter_queue-1.0.0.tar.bz2，並打入已下指令</p>
+
+<pre><code>$ tar -jxvf libnetfilter_queue-1.0.0.tar.bz2
+$ cd libnetfilter_queue-1.0.0
+$ ./configure
+$ make
+$ sudo make install
+</code></pre>
+
+<h2>編譯範例程式: nfqnl_test.c</h2>
+
+<pre><code>$ cd utils
+$ gcc -Wall -o test nfqnl_test.c -lnfnetlink -lnetfilter_queue
+</code></pre>
+
+<h2>測試</h2>
+
+<p>值得注意的是，測試程式需要有root權限，且必須先設定環境變數，因此使用su。另外，若是使用ssh的話，若先下達iptables的指令會造成ssh被擋掉。需要執行test程式之後才會恢復連線。</p>
+
+<pre><code>$ su
+$ LD_LIBRARY_PATH=/usr/local/lib/
+$ export LD_LIBRARY_PATH
+$ iptables -A OUTPUT -p tcp -j NFQUEUE --queue-num 0
+$ ./test
+</code></pre>
+
+<h2>References</h2>
+
+<ol>
+<li><a href="http://netfilter.org/">http://netfilter.org/</a></li>
+<li><a href="http://www.roman10.net/how-to-configure-install-and-use-libnefilter_queue-on-linux/">http://www.roman10.net/how-to-configure-install-and-use-libnefilter_queue-on-linux/</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tracing OpenFlow Source Code]]></title>
+    <link href="http://chyeh.github.com/blog/2013/04/12/tracing-openflow-source-code/"/>
+    <updated>2013-04-12T21:33:00+08:00</updated>
+    <id>http://chyeh.github.com/blog/2013/04/12/tracing-openflow-source-code</id>
+    <content type="html"><![CDATA[<h2>Step 1: run-wait loop</h2>
+
+<p>openflow\udatapath\udatapath.c</p>
+
+<p><strong>Note: 去trace dp_run()</strong></p>
+
+<pre><code>137     for (;;) {
+138         dp_run(dp);
+139         dp_wait(dp);
+140         poll_block();
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Multimedia Communications Homework #2]]></title>
